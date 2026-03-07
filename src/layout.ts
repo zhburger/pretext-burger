@@ -335,28 +335,28 @@ function computeBidiLevels(str: string): Int8Array | null {
 // --- Public types ---
 
 export type PreparedText = {
-  widths: number[]
-  isSpace: boolean[]
-  segLevels: Int8Array | null
-  breakableWidths: (number[] | null)[]
+  widths: number[] // Segment widths, e.g. [42.5, 4.4, 37.2]
+  isSpace: boolean[] // True when the matching segment is whitespace, e.g. [false, true, false]
+  segLevels: Int8Array | null // Bidi embedding level per segment, or null for pure LTR text
+  breakableWidths: (number[] | null)[] // Grapheme widths for overflow-wrap segments, else null
 }
 
 export type PreparedTextWithSegments = PreparedText & {
-  segments: string[]
+  segments: string[] // Segment text aligned with the parallel arrays, e.g. ['hello', ' ', 'world']
 }
 
 export type LayoutResult = {
-  lineCount: number
-  height: number
+  lineCount: number // Number of wrapped lines, e.g. 3
+  height: number // Total block height, e.g. lineCount * lineHeight = 57
 }
 
 export type LayoutLine = {
-  text: string
-  width: number
+  text: string // Full text content of this line, e.g. 'hello world'
+  width: number // Measured width of this line, e.g. 87.5
 }
 
 export type LayoutLinesResult = LayoutResult & {
-  lines: LayoutLine[]
+  lines: LayoutLine[] // Per-line text/width pairs for custom rendering
 }
 
 // --- Public API ---
