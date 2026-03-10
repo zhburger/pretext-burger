@@ -530,6 +530,27 @@ So the current evidence is:
 - but the remaining Arabic fine field is no longer mostly source noise
 - the main unresolved class is now small line-edge tolerance, not broad preprocessing mistakes
 
+## Arabic punctuation-plus-mark clusters
+
+The last remaining negative Arabic fine-width case (`527`) turned out to be one more preprocessing issue,
+not a shaping-model failure.
+
+`Intl.Segmenter` emitted:
+- `["وحوارى", " ", "بكشء", "،ٍ"]`
+
+That allowed the engine to keep `بكشء` on the previous line while stranding the Arabic comma-plus-mark
+cluster on the next line. Chrome behaved as though `بكشء،ٍ` were one left-sticky unit and broke earlier.
+
+The fix was small:
+- allow left-sticky punctuation segments to include trailing combining marks
+- so clusters like `،ٍ` still merge into the preceding Arabic word during `prepare()`
+
+Effect on the Chrome Arabic fine sweep (`300..900`, step `1`):
+- before: `581/601 exact`
+- after: `582/601 exact`
+- the last negative width (`527`) disappeared
+- remaining Arabic fine misses are now all positive one-line edge-tolerance cases
+
 The current verification loop:
 - `bun run accuracy-check`
 - `bun run accuracy-check:safari`

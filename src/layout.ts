@@ -299,6 +299,8 @@ const arabicNoSpaceTrailingPunctuation = new Set([
   '\u061B', // ؛
 ])
 
+const combiningMarkRe = /\p{M}/u
+
 const closingQuoteChars = new Set([
   '”', '’', '»', '›',
   '\u300D', // 」
@@ -311,10 +313,16 @@ const closingQuoteChars = new Set([
 ])
 
 function isLeftStickyPunctuationSegment(segment: string): boolean {
+  let sawPunctuation = false
   for (const ch of segment) {
-    if (!leftStickyPunctuation.has(ch)) return false
+    if (leftStickyPunctuation.has(ch)) {
+      sawPunctuation = true
+      continue
+    }
+    if (sawPunctuation && combiningMarkRe.test(ch)) continue
+    return false
   }
-  return segment.length > 0
+  return sawPunctuation
 }
 
 function isCJKLineStartProhibitedSegment(segment: string): boolean {

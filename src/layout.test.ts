@@ -108,6 +108,11 @@ describe('prepare invariants', () => {
     expect(prepared.segments).toEqual(['مرحبا،', ' ', 'عالم؟'])
   })
 
+  test('keeps arabic punctuation-plus-mark clusters attached to the preceding word', () => {
+    const prepared = prepareWithSegments('وحوارى بكشء،ٍ من قولهم', FONT)
+    expect(prepared.segments).toEqual(['وحوارى', ' ', 'بكشء،ٍ', ' ', 'من', ' ', 'قولهم'])
+  })
+
   test('keeps arabic no-space punctuation clusters together', () => {
     const prepared = prepareWithSegments('فيقول:وعليك السلام', FONT)
     expect(prepared.segments).toEqual(['فيقول:وعليك', ' ', 'السلام'])
