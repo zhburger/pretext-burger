@@ -3,7 +3,9 @@ import type { PreparedText } from '../src/layout.ts'
 import { TEXTS } from '../src/test-data.ts'
 import arRisalatAlGhufranPart1 from '../corpora/ar-risalat-al-ghufran-part-1.txt' with { type: 'text' }
 import hiEidgah from '../corpora/hi-eidgah.txt' with { type: 'text' }
+import kmPrachumReuangPrengKhmerVolume7Stories1To10 from '../corpora/km-prachum-reuang-preng-khmer-volume-7-stories-1-10.txt' with { type: 'text' }
 import koUnsuJohEunNal from '../corpora/ko-unsu-joh-eun-nal.txt' with { type: 'text' }
+import thNithanVetalStory1 from '../corpora/th-nithan-vetal-story-1.txt' with { type: 'text' }
 
 const COUNT = 500
 const FONT_FAMILY = '"Helvetica Neue", Helvetica, Arial, sans-serif'
@@ -55,6 +57,24 @@ const CORPORA = [
     text: koUnsuJohEunNal,
     font: '18px "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR", sans-serif',
     lineHeight: 30,
+    width: 300,
+    sampleWidths: [240, 300, 360] as const,
+  },
+  {
+    id: 'th-nithan-vetal-story-1',
+    label: 'Thai prose',
+    text: thNithanVetalStory1,
+    font: '20px "Thonburi", "Noto Sans Thai", sans-serif',
+    lineHeight: 32,
+    width: 300,
+    sampleWidths: [240, 300, 360] as const,
+  },
+  {
+    id: 'km-prachum-reuang-preng-khmer-volume-7-stories-1-10',
+    label: 'Khmer prose',
+    text: kmPrachumReuangPrengKhmerVolume7Stories1To10,
+    font: '20px "Khmer Sangam MN", "Khmer MN", "Noto Sans Khmer", serif',
+    lineHeight: 32,
     width: 300,
     sampleWidths: [240, 300, 360] as const,
   },

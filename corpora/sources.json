@@ -54,6 +54,24 @@
     "notes": "Thai prose stress corpus from Wikisource, trimmed to the story body with header navigation and trailing footnote removed."
   },
   {
+    "id": "km-prachum-reuang-preng-khmer-volume-7-stories-1-10",
+    "language": "km",
+    "direction": "ltr",
+    "title": "ប្រជុំរឿងព្រេងខ្មែរ/ភាគទី៧ (រឿង ១-១០)",
+    "source_url": "https://wikisource.org/wiki/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%87%E1%9E%BB%E1%9F%86%E1%9E%9A%E1%9E%BF%E1%9E%84%E1%9E%96%E1%9F%92%E1%9E%9A%E1%9F%81%E1%9E%84%E1%9E%81%E1%9F%92%E1%9E%98%E1%9F%82%E1%9E%9A/%E1%9E%97%E1%9E%B6%E1%9E%82%E1%9E%91%E1%9E%B8%E1%9F%A7",
+    "output": "corpora/km-prachum-reuang-preng-khmer-volume-7-stories-1-10.txt",
+    "font_family": "\"Khmer Sangam MN\", \"Khmer MN\", \"Noto Sans Khmer\", serif",
+    "font_size_px": 20,
+    "line_height_px": 32,
+    "default_width": 600,
+    "min_width": 300,
+    "max_width": 900,
+    "characters": 31515,
+    "lines": 105,
+    "acquired_via": "parse",
+    "notes": "Khmer folk-tale anthology from Wikisource, combining stories 1-10 from volume 7 after trimming navigation/header scaffolding."
+  },
+  {
     "id": "ar-risalat-al-ghufran-part-1",
     "language": "ar",
     "direction": "rtl",

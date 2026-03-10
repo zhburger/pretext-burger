@@ -754,6 +754,29 @@ Treating ASCII `"` as contextual quote glue during preprocessing was enough to c
 field from `43/61 exact` to `59/61 exact`, without moving the browser accuracy corpus in Safari or Firefox.
 The two remaining coarse Thai misses are both the familiar tiny positive edge-fit class (`+32px`).
 
+## Khmer corpus note
+
+To broaden the Southeast Asian stress class without immediately jumping to Lao/Khmer-specific engine work,
+we added a Khmer anthology corpus from `ប្រជុំរឿងព្រេងខ្មែរ/ភាគទី៧`, combining stories 1-10 after trimming
+Wikisource navigation/header scaffolding.
+
+Important extraction choice:
+- keep the explicit Khmer zero-width separators from the source text
+- do not normalize them away during corpus cleanup; they are part of the browser's real break-opportunity signal
+
+What we verified:
+- Chrome spot checks at `300`, `600`, and `800` were exact
+- Safari spot checks at `300`, `600`, and `800` were exact
+- a Chrome sampled sweep (`--samples=9`) was exact
+
+What we learned:
+- this did **not** immediately expose a new structural dictionary-segmentation bug
+- the corpus is useful as a real Khmer canary precisely because it broadens the script class while staying clean
+- the existing `Range`-based browser diagnostics remain the right tool for Thai/Lao/Khmer/Myanmar-class text
+
+One practical note:
+- the full `step=10` corpus sweep was much slower than the one-off checker, so `--samples=<n>` is the better first pass for large Southeast Asian corpora unless a width-by-width map is specifically needed
+
 Headless (HarfBuzz, Arial Unicode):
 - 1920/1920 (100%) word-sum vs full-line measurement
 - Algorithm is exact under the headless HarfBuzz backend; the browser sweeps are now also clean on fresh runs.

@@ -25,6 +25,12 @@ Current bundle:
   - URL: <https://th.wikisource.org/wiki/%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%A7%E0%B8%95%E0%B8%B2%E0%B8%A5/%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88_1>
   - Acquisition: Wikisource `parse` API, trimmed to the story body with header navigation and trailing footnote removed
 
+- `km-prachum-reuang-preng-khmer-volume-7-stories-1-10.txt`
+  - Language: Khmer
+  - Source: `ប្រជុំរឿងព្រេងខ្មែរ/ភាគទី៧`
+  - URL: <https://wikisource.org/wiki/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%87%E1%9E%BB%E1%9F%86%E1%9E%9A%E1%9E%BF%E1%9E%84%E1%9E%96%E1%9F%92%E1%9E%9A%E1%9F%81%E1%9E%84%E1%9E%81%E1%9F%92%E1%9E%98%E1%9F%82%E1%9E%9A/%E1%9E%97%E1%9E%B6%E1%9E%82%E1%9E%91%E1%9E%B8%E1%9F%A7>
+  - Acquisition: rendered-page HTML cleanup, combining stories 1-10 after trimming navigation/header scaffolding
+
 - `ar-risalat-al-ghufran-part-1.txt`
   - Language: Arabic
   - Source: Al-Ma'arri, `رسالة الغفران/الجزء الأول`
