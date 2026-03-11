@@ -47,6 +47,7 @@ Internal notes for contributors and agents. Use `README.md` as the public source
 - If `Intl.Segmenter` emits `" " + combining marks` before Arabic text (for example `كل ِّواحدةٍ`), split it into `" "` plus marks-prefix-on-next-word during preprocessing.
 - `NBSP`-style glue should survive `prepare()` as visible content and prevent ordinary word-boundary wrapping; `ZWSP` should survive as a zero-width break opportunity.
 - Soft hyphens should stay invisible when unbroken, but if the engine chooses that break, the broken line should expose a visible trailing hyphen in `layoutWithLines()`.
+- `layoutWithLines()` now exposes `trailingDiscretionaryHyphen` on each line, so userland renderers can tell when a visible trailing hyphen was inserted by a soft-hyphen break instead of coming from source text.
 - Astral CJK ideographs must still hit the CJK path; do not rely on BMP-only `charCodeAt()` checks there.
 - Non-word, non-space segments are break opportunities, same as words.
 - CJK grapheme splitting plus kinsoku merging keeps prohibited punctuation attached to adjacent graphemes.

@@ -86,6 +86,7 @@ function setActiveLine(index: number, line: LayoutLine | null): void {
     `Line ${index + 1}: width ${line.width.toFixed(2)}px, ` +
     `start (${line.start.segmentIndex}, ${line.start.graphemeIndex}), ` +
     `end (${line.end.segmentIndex}, ${line.end.graphemeIndex}). ` +
+    (line.trailingDiscretionaryHyphen ? 'Ends with an inserted discretionary hyphen. ' : '') +
     `Text: ${JSON.stringify(line.text)}`
 }
 

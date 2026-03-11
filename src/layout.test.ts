@@ -138,6 +138,7 @@ describe('prepare invariants', () => {
     const wide = layoutWithLines(prepared, 200, LINE_HEIGHT)
     expect(wide.lineCount).toBe(1)
     expect(wide.lines.map(line => line.text)).toEqual(['transatlantic'])
+    expect(wide.lines.map(line => line.trailingDiscretionaryHyphen)).toEqual([false])
 
     const prefixed = prepareWithSegments('foo trans\u00ADatlantic', FONT)
     const softBreakWidth = Math.max(
@@ -147,6 +148,7 @@ describe('prepare invariants', () => {
     const narrow = layoutWithLines(prefixed, softBreakWidth, LINE_HEIGHT)
     expect(narrow.lineCount).toBe(2)
     expect(narrow.lines.map(line => line.text)).toEqual(['foo trans-', 'atlantic'])
+    expect(narrow.lines.map(line => line.trailingDiscretionaryHyphen)).toEqual([true, false])
     expect(layout(prefixed, softBreakWidth, LINE_HEIGHT).lineCount).toBe(narrow.lineCount)
 
     const continuedSoftBreakWidth =
@@ -158,6 +160,7 @@ describe('prepare invariants', () => {
       0.1
     const continued = layoutWithLines(prefixed, continuedSoftBreakWidth, LINE_HEIGHT)
     expect(continued.lines.map(line => line.text)).toEqual(['foo trans-a', 'tlantic'])
+    expect(continued.lines.map(line => line.trailingDiscretionaryHyphen)).toEqual([true, false])
     expect(layout(prefixed, continuedSoftBreakWidth, LINE_HEIGHT).lineCount).toBe(continued.lineCount)
   })
 
@@ -319,6 +322,7 @@ describe('layout invariants', () => {
       width: widthOfHello,
       start: { segmentIndex: 0, graphemeIndex: 0 },
       end: { segmentIndex: 1, graphemeIndex: 0 },
+      trailingDiscretionaryHyphen: false,
     }])
   })
 
