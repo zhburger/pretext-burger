@@ -811,8 +811,14 @@ function scheduleRender(): void {
   })
 }
 
+function hasActiveTextSelection(): boolean {
+  const selection = window.getSelection()
+  return selection !== null && !selection.isCollapsed && selection.rangeCount > 0
+}
+
 window.addEventListener('resize', scheduleRender)
 pageNode.addEventListener('touchmove', event => {
+  if (hasActiveTextSelection()) return
   event.preventDefault()
 }, { passive: false })
 document.addEventListener('mousemove', event => {
